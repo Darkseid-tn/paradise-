@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        .slideshow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: #000; /* Fallback background color */
+        }
+        .slideshow img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+        .slideshow img.active {
+            opacity: 1;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            width: 500px;
+            transition: transform 0.3s;
+            position: calc(center);
+        }
+        form:hover {
+            transform: scale(1.05);
+        }
+        h2 {
+            margin-bottom: 15px;
+            color: #5cb85c;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:hover, input[type="email"]:hover, input[type="password"]:hover {
+            border-color: #5cb85c;
+        }
+        input[type="submit"] {
+            background-color: #5cb85c;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 90%;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #4cae4c;
+        }
+        header {
+            background-color: #5cb85c;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            width: 90%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        main {
+            margin-top: 100px; /* Adjust based on header height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: calc(100vh - 100px); /* Adjust based on header height */
+        }
+        nav {
+            margin-top: 20px;
+            padding-right: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+            transition: color 0.3s;
+            padding-right: 10px;
+        }
+        nav a:hover {
+            color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PARADISE HOTEL</h1>
+    </header>
+    <div class="slideshow">
+        <img src="Paradise 9.jpg" class="active">
+        <img src="Paradise 10.jpg">
+        <img src="Paradise 7.jpg">
+        <!-- Add more images as needed -->
+    </div>
+    <nav>
+        <a href="home.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="prices.html">PRICES</a>
+            <a href="about us.html"> ABOUT US</a>
+    </nav>
+    <main>
+        <form>
+            <h2>Sign Up</h2>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <input type="submit" value="Submit">
+        </form>
+    </main>
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.slideshow img');
+        const totalImages = images.length;
+
+        setInterval(() => {
+            console.log('Changing image');
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % totalImages;
+            images[currentIndex].classList.add('active');
+        }, 3000); // Change image every 3 seconds
+    </script>
+</body>
+</html>
